@@ -3,11 +3,12 @@
   flex-wrap: wrap;
   gap: 24px;
   list-style-type: none;
+  justify-content: space-between;
 }
 
 .gallery-item {
   list-style: none;
-  flex: 1 1 30%;
+  flex: 0 1 calc(33.333% - 24px);
 }
 
 .gallery-link {
@@ -17,6 +18,7 @@
 .gallery-image {
   width: 100%;
   height: auto;
+  object-fit: cover;
   transition: transform 0.2s ease;
 }
 .gallery-image:hover {
