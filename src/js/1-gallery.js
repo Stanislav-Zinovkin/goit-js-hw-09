@@ -69,24 +69,20 @@ const images = [
 
 const galleryContainer = document.querySelector('.gallery');
 
+let galleryHTML = '';
+
 images.forEach(({ preview, original, description }) => {
-  const galleryItem = document.createElement('li');
-  galleryItem.classList.add('gallery-item');
-
-  const galleryLink = document.createElement('a');
-  galleryLink.classList.add('gallery-link');
-  galleryLink.href = original;
-
-  const galleryImage = document.createElement('img');
-  galleryImage.classList.add('gallery-image');
-  galleryImage.src = preview;
-  galleryImage.dataset.source = original;
-  galleryImage.alt = description;
-
-  galleryLink.appendChild(galleryImage);
-  galleryItem.appendChild(galleryLink);
-  galleryContainer.appendChild(galleryItem);
+  galleryHTML += `
+    <li class="gallery-item">
+      <a class="gallery-link" href="${original}">
+        <img class="gallery-image" src="${preview}" data-source="${original}" alt="${description}">
+      </a>
+    </li>
+  `;
 });
+
+galleryContainer.innerHTML = galleryHTML;
+
 const simplelightbox = new SimpleLightbox('.gallery a', {
   captions: true,
   captionSelector: 'img',
